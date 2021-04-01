@@ -1,0 +1,44 @@
+"use strict";
+
+let arr = [1, 50, 40, 3, 10];
+
+let sumAbove20 = arr
+  .filter((item) => item > 20)
+  .reduce((sum, item) => sum + item);
+
+//========================================
+
+let strArr = ["mintes", "halle", "amen", "amani", "robbie", "alephat"];
+
+let newStrArr = strArr.filter((item) => item.length >= 5 && item.includes("a"));
+
+//========================================
+
+function Employee(firstName, lastName, birthdate) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.birthdate = birthdate;
+
+  this.getFullName = function () {
+    return this.firstName + this.lastName;
+  };
+
+  this.getAge = function () {
+    return new Date().getFullYear() - new Date(this.birthdate).getFullYear();
+  };
+}
+
+let josh = new Employee("Josh", "Gebre", "1985-08-12");
+let mintes = new Employee("Mintes", "Gebre", "1991-08-28");
+let robbie = new Employee("Robbie", "Benti", "2005-02-13");
+let alephat = new Employee("Alephat", "Benti", "2010");
+
+let employee = [josh, mintes, robbie, alephat];
+
+let lessThan20 = employee.filter((item) => item.getAge() < 20);
+
+let youngEmployee = employee
+  .filter((item) => new Date(item.birthdate).getFullYear() > 2000)
+  .map((item) => item.getFullName());
+
+//========================================
