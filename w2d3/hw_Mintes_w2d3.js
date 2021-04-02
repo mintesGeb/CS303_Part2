@@ -26,17 +26,25 @@ let linkedList = {
     this.length--;
   },
   print() {
-    let set = new Set();
+    let arr = [];
     let head = this.start;
 
     function helper(obj) {
-      set.add(obj.value);
+      arr.push(obj.value);
       if (obj.next !== null) helper(obj.next);
     }
 
     if (head !== null) {
       helper(head);
     }
+    let i = 0;
+    let popped;
+    while (i < arr.length) {
+      popped = arr.pop();
+      arr.splice(i, 0, popped);
+      i++;
+    }
+    let set = new Set(arr);
     console.log(set);
     return set;
 
@@ -53,6 +61,7 @@ linkedList.add(5);
 console.log(linkedList);
 // linkedList.remove();
 // console.log(linkedList);
-// linkedList.remove();
 // console.log(linkedList);
+linkedList.print();
+linkedList.remove();
 linkedList.print();
