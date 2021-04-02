@@ -19,11 +19,40 @@ let linkedList = {
     this.start = obj;
     this.length++;
   },
-  // remove() {},
+  remove() {
+    let obj = this.start.next;
+
+    this.start = obj;
+    this.length--;
+  },
+  print() {
+    let set = new Set();
+    let head = this.start;
+
+    function helper(obj) {
+      set.add(obj.value);
+      if (obj.next !== null) helper(obj.next);
+    }
+
+    if (head !== null) {
+      helper(head);
+    }
+    console.log(set);
+    return set;
+
+    // if (this.start.value) arr.push(this.start.value);
+    // if (start)
+    // console.log(arr);
+  },
 };
 
-console.log(linkedList);
 linkedList.add(2);
-console.log(linkedList);
 linkedList.add(3);
+linkedList.add(4);
+linkedList.add(5);
 console.log(linkedList);
+// linkedList.remove();
+// console.log(linkedList);
+// linkedList.remove();
+// console.log(linkedList);
+linkedList.print();
