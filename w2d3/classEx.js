@@ -36,8 +36,28 @@
 //   ll.add(3);
 //   console.log(ll);
 
-let linkedList = {
+// let linkedList = {
+//   head: null,
+
+//   add(n) {
+//     let obj = {
+//       value: n,
+//       next: this.head,
+//     };
+//     this.head = obj;
+//   },
+// };
+// console.log(linkedList);
+// linkedList.add(2);
+// console.log(linkedList);
+// linkedList.add(3);
+// console.log(linkedList);
+
+// console.log(linkedList);
+
+let ll = {
   head: null,
+  length: 0,
 
   add(n) {
     let obj = {
@@ -45,12 +65,49 @@ let linkedList = {
       next: this.head,
     };
     this.head = obj;
+    this.length++;
+  },
+  remove() {
+    this.head = this.head.next;
+    this.length--;
+  },
+
+  print() {
+    let arr = [];
+
+    function helper(obj) {
+      arr.push(obj.value);
+      if (obj.next !== null) {
+        helper(obj.next);
+      }
+    }
+
+    if (this.head !== null) {
+      helper(this.head);
+    }
+    let i = 0;
+    while (i < arr.length) {
+      let popped = arr.pop();
+      arr.splice(i, 0, popped);
+      i++;
+    }
+    let set = new Set(arr);
+    console.log(set);
   },
 };
-console.log(linkedList);
-linkedList.add(2);
-console.log(linkedList);
-linkedList.add(3);
-console.log(linkedList);
-
-// console.log(linkedList);
+console.log(ll);
+ll.add(3);
+console.log(ll);
+ll.add(4);
+console.log(ll);
+ll.add(5);
+console.log(ll);
+ll.remove();
+ll.remove();
+// ll.remove();
+// console.log(ll);
+// ll.remove();
+// console.log(ll);
+// ll.remove();
+// console.log(ll);
+ll.print();
