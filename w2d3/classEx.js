@@ -95,6 +95,7 @@ let ll = {
     console.log(set);
   },
 };
+
 console.log(ll);
 ll.add(3);
 console.log(ll);

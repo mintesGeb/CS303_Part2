@@ -16,15 +16,36 @@ let linkedList = {
       value: n,
       next: this.start,
     };
+
     this.start = obj;
     this.length++;
   },
-  remove() {
+
+  remove(n) {
+    // let head = this.start;
+    // let length = this.length;
+    // let newObj={};
+    // // let current = head.next;
+
+    // function helper(obj, num) {
+    //   if (obj === null) return "No value asuch";
+    //   if (obj.value === num) {
+    //     obj = obj.next;
+    //     length--;
+
+    //   } else helper(obj.next, num);
+    // }
+    // if (head !== null) helper(head, n);
+    // this.length = length;
+    // console.log(this);
+    // return "No value asuch";
+
     let obj = this.start.next;
 
     this.start = obj;
     this.length--;
   },
+
   print() {
     let arr = [];
     let head = this.start;
@@ -37,6 +58,7 @@ let linkedList = {
     if (head !== null) {
       helper(head);
     }
+
     let i = 0;
     let popped;
     while (i < arr.length) {
@@ -44,24 +66,28 @@ let linkedList = {
       arr.splice(i, 0, popped);
       i++;
     }
-    let set = new Set(arr);
-    console.log(set);
-    return set;
 
-    // if (this.start.value) arr.push(this.start.value);
-    // if (start)
-    // console.log(arr);
+    console.log(`LinkedList{${arr.join(",")}}`);
   },
 };
-
+console.log(linkedList);
 linkedList.add(2);
+console.log(linkedList);
 linkedList.add(3);
-linkedList.add(4);
+console.log(linkedList);
+linkedList.add(2);
+console.log(linkedList);
 linkedList.add(5);
 console.log(linkedList);
-// linkedList.remove();
+
+// linkedList.add(4);
+// linkedList.add(5);
 // console.log(linkedList);
+// // linkedList.remove();
+// // console.log(linkedList);
+// // console.log(linkedList);
+// linkedList.print();
+linkedList.remove(5);
 // console.log(linkedList);
-linkedList.print();
-linkedList.remove();
+
 linkedList.print();
