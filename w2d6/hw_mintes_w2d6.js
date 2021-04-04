@@ -42,10 +42,25 @@
 
 // 2. In the begining of the loop
 
-let i = 0;
+// let i = 0;
 
-setTimeout(() => console.log(i), 1);
+// setTimeout(() => console.log(i), 1);
 
-for (let j = 0; j < 1000000000; j++) {
-  i++;
+// for (let j = 0; j < 1000000000; j++) {
+//   i++;
+// }
+
+function makeArmy() {
+  let shooters = [];
+  let i = 0;
+  while (i < 10) {
+    let shooter = function () {
+      console.log(i);
+    };
+    shooters.push(shooter());
+    i++;
+  }
+  return shooters;
 }
+let army = makeArmy();
+console.log(army[0]);
