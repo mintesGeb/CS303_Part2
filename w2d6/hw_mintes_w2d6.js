@@ -50,13 +50,7 @@ function printNumbers(from, to) {
 }
 printNumbers(1, 10);
 
-// 2. In the begining of the loop
+// 2. after the loop
 
-// let i = 0;
-
-// setTimeout(() => console.log(i), 1);
-
-// for (let j = 0; j < 1000000000; j++) {
-//   i++;
-// }
+// The alert is going to show the last number (increament of i) which is the limit j goes upto
 // --------
