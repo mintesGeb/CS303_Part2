@@ -26,19 +26,29 @@
 
 // 1.
 
-let i = 0;
-function addOne(from, to) {
-  let arr = [];
-  while (from <= to) {
-    arr.push(from);
-    from++;
-  }
-  console.log(arr[i]);
-  i++;
-}
+// ----Option 1----------
 
-let timeID = setInterval(() => addOne(1, 10), 1000);
-setTimeout(() => clearTimeout(timeID), 11000);
+// let i = 0;
+// function addOne(from, to) {
+//   let arr = [];
+//   while (from <= to) {
+//     arr.push(from);
+//     from++;
+//   }
+//   console.log(arr[i]);
+//   i++;
+// }
+
+// let timeID = setInterval(() => addOne(1, 10), 1000);
+// setTimeout(() => clearTimeout(timeID), 11000);
+
+// ----Option 2----------
+
+function printNumbers(from, to) {
+  let timeID = setInterval(() => console.log(from++), 1000);
+  setTimeout(() => clearTimeout(timeID), (to + 1) * 1000);
+}
+printNumbers(1, 10);
 
 // 2. In the begining of the loop
 
