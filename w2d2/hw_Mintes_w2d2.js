@@ -2,15 +2,21 @@
 
 let arr = [1, 50, 40, 3, 10];
 
+// let sumAbove20 = arr
+//   .filter((item) => item > 20)
+//   .reduce((sum, item) => sum + item);
 let sumAbove20 = arr
   .filter((item) => item > 20)
-  .reduce((sum, item) => sum + item);
-
+  .reduce((sum, item) => sum + item, 0);
+// console.log(sumAbove20);
 //========================================
 
 let strArr = ["mintes", "halle", "amen", "amani", "robbie", "alephat"];
 
+// let newStrArr = strArr.filter((item) => item.length >= 5 && item.includes("a"));
+
 let newStrArr = strArr.filter((item) => item.length >= 5 && item.includes("a"));
+// console.log(newStrArr);
 
 //========================================
 
@@ -63,7 +69,7 @@ const students = [
 let i = students
   .filter((item) => item.courses.includes("cs303"))
   .reduce((sum, item, index, arr) => sum + item.grade / arr.length, 0);
-console.log(i);
+// console.log(i);
 
 let arr123 = [1, 2, 3];
 
@@ -73,33 +79,53 @@ let arr123 = [1, 2, 3];
 // }
 
 function printReverse(str) {
-  // if (str.length === 1) return str;
+  // -----opt1-----
 
-  // return str.slice(-1) + printReverse(str.slice(0, -1));
+  if (str.length <= 1) return str;
 
-  let string = "";
-  let i = str.length - 1;
-  while (i >= 0) {
-    string += str[i];
-    i--;
-  }
-  return string;
+  return str.substr(-1) + printReverse(str.substr(0, str.length - 1));
+
+  // ---------opt2------
+
+  // let string = "";
+  // let i = str.length - 1;
+  // while (i >= 0) {
+  //   string += str[i];
+  //   i--;
+  // }
+  // return string;
+
+  // -----opt3-----
+  // let i = 0;
+  // let string = [...str];
+  // while (i < string.length) {
+  //   let popped = string.pop();
+  //   string.splice(i, 0, popped);
+  //   i++;
+  // }
+  // return string.join("");
 }
+// console.log(printReverse("abc"));
 
-let result = printReverse("abc");
-console.log(result);
+// let x = "were";
+// console.log(x);
+// let y = x.substr(0, 2);
+// console.log(y);
 
-let linkedList = { value: 1 };
-linkedList.next = { value: 2 };
-linkedList.next.next = { value: 4 };
-linkedList.next.next.next = { value: 5 };
-console.log(linkedList);
+// let result = printReverse("abc");
+// console.log(result);
 
-let newItem = { value: "New Item" };
-newItem.next = linkedList;
-console.log(newItem);
+// let linkedList = { value: 1 };
+// linkedList.next = { value: 2 };
+// linkedList.next.next = { value: 4 };
+// linkedList.next.next.next = { value: 5 };
+// console.log(linkedList);
 
-let secondList = linkedList.next;
-newItem.next = null;
-newItem.next = secondList;
-console.log(newItem);
+// let newItem = { value: "New Item" };
+// newItem.next = linkedList;
+// console.log(newItem);
+
+// let secondList = linkedList.next;
+// newItem.next = null;
+// newItem.next = secondList;
+// console.log(newItem);
