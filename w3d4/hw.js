@@ -57,12 +57,18 @@ Student.prototype.computeAverageGrade = function () {
   return average;
 };
 
-let mintes = new Student("Mintes", "Gebre", [70, 80, 90]);
-let robbie = new Student("Rehoboth", "Benti", [76, 86, 93]);
-let jossy = new Student("Eyosias", "Tekle", [79, 80, 99]);
+let mintes = new Student("Mintes", "Gebre", [80, 70, 90]);
+let robbie = new Student("Rehoboth", "Benti", [86, 76, 93]);
+let jossy = new Student("Eyosias", "Tekle", [79, 99, 80]);
 let arr = [mintes, robbie, jossy];
 
 let averages = arr.map((item) => item.computeAverageGrade());
 console.log(averages);
 
-// Student.prototype.sort = () => sort();
+Student.prototype.sort = function () {
+  let sorted = this.grades.sort((x, y) => x - y);
+  console.log(sorted);
+  return sorted;
+};
+
+mintes.sort();
