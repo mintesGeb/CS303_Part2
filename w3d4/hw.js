@@ -65,4 +65,4 @@ let arr = [mintes, robbie, jossy];
 let averages = arr.map((item) => item.computeAverageGrade());
 console.log(averages);
 
-Student.prototype.sort = () => sort();
+// Student.prototype.sort = () => sort();
