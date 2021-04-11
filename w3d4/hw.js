@@ -65,11 +65,17 @@ let arr = [mintes, robbie, jossy];
 let averages = arr.map((item) => item.computeAverageGrade());
 console.log(averages);
 
-Array.prototype// Student.prototype.sort = function () {
+// Array.prototype.sort = function () {               //....this will replace the existing Array method sort - not recomended
 //   let sorted = this.grades.sort((x, y) => x - y);
 //   console.log(sorted);
 //   return sorted;
 // };
 
-.mintes
-  .sort();
+Student.prototype.sort = function () {
+  //.....sort method for my constructor function example shown below
+  let sorted = this.grades.sort((x, y) => x - y);
+  console.log(sorted);
+  return sorted;
+};
+
+robbie.sort();
