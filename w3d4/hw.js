@@ -72,7 +72,7 @@ console.log(averages);
 // };
 
 Student.prototype.sort = function () {
-  //.....sort method for my constructor function example shown below
+  //.....sort method for my constructor function example shown below directly operated on the object
   let sorted = this.grades.sort((x, y) => x - y);
   console.log(sorted);
   return sorted;
