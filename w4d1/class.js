@@ -79,11 +79,51 @@
 // let rabbits = [new Rabbit("white Rabbit", 10), new Rabbit("black rabbit", 5)];
 // let sorted = rabbits.sort(Rabbit.compare);
 // console.log(sorted);
+
+// class Animal {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   get name() {
+//     console.log("hi " + this._name);
+//   }
+//   set name(value) {
+//     if (value.length < 4) {
+//       console.log("too short");
+//     } else {
+//       this._name = value;
+//     }
+//   }
+// }
+
+// let rabbit = new Animal("white rabbit");
+
+// // console.log(rabbit);
+// // rabbit.name;
+// rabbit.name = "asfasdf";
+// rabbit.name;
+
+// class User {
+//   constructor(name) {
+//     this._name = name;
+//   }
+//   set name(value) {
+//     this._name = value;
+//   }
+//   get name() {
+//     return this._name;
+//   }
+// }
+// let user1 = new User("John");
+// user1.name = "Belihu";
+// console.log(user1._name);
+
 class Clock {
   constructor({ template }) {
     this.template = template;
   }
   render() {
+    console.log(this.template);
     let date = new Date();
     let hours = date.getHours();
     if (hours < 10) hours = "0" + hours;
@@ -105,3 +145,30 @@ class Clock {
     this.timer = setInterval(() => this.render(), 1000);
   }
 }
+
+// class ExtendedClock extends Clock {
+//   constructor({ template }, precision = 1000) {
+//     super({ template });
+//     this.precision = precision;
+//   }
+//   start() {
+//     this.render();
+//     this.timer = setInterval(() => this.render(), this.precision);
+//   }
+// }
+// let clock = new ExtendedClock({ template: "h:m:s" }, 5000);
+// clock.start();
+
+class ExtendedClock extends Clock {
+  constructor({ template }, precision = 1000) {
+    super({ template });
+    this.precision = precision;
+  }
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), this.precision);
+  }
+}
+
+let newClock = new ExtendedClock({ template: "h:m:s" }, 5000);
+newClock.start();
