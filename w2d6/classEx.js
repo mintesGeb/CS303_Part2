@@ -25,8 +25,15 @@
 // }
 // printNumbers(1, 10);
 
-let i = 0;
-setTimeout(() => console.log(i), 100);
-for (let j = 0; j < 1000000000; j++) {
-  i++;
+// let i = 0;
+// setTimeout(() => console.log(i), 100);
+// for (let j = 0; j < 1000000000; j++) {
+//   i++;
+// }
+
+let x = 1;
+function f() {
+  console.log(x);
+  let x = 2;
 }
+f();

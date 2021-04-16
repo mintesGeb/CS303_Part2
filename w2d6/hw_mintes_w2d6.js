@@ -44,9 +44,21 @@
 
 // ----Option 2----------
 
+// function printNumbers(from, to) {
+//   let timeID = setInterval(() => console.log(from++), 1000);
+//   setTimeout(() => clearTimeout(timeID), (to + 1) * 1000);
+// }
+// printNumbers(1, 10);
+
 function printNumbers(from, to) {
-  let timeID = setInterval(() => console.log(from++), 1000);
-  setTimeout(() => clearTimeout(timeID), (to + 1) * 1000);
+  let timeID = setInterval(function () {
+    console.log(from);
+    if (from >= to) {
+      clearTimeout(timeID);
+    }
+    from++;
+  }, 1000);
+  // setTimeout(() => clearTimeout(timeID), (to + 1) * 1000);
 }
 printNumbers(1, 10);
 

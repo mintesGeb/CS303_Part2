@@ -289,6 +289,8 @@
 // }
 // console.log(computeTotalPrice(cars));
 
+// -------//------------------
+
 // class Shape {
 //   area() {
 //     return 0;
@@ -326,14 +328,25 @@
 //     this.height = h;
 //   }
 //   area() {
-//     return (this.base * this.height) / 2;
+//     return this.base * (this.height) / 2;
 //   }
 // }
 
+// function cumilativeFun(x) {
+//   return x.reduce((sum, shape) => {
+//     if (shape instanceof Shape) {
+//       return sum + shape.area();
+//     } else {
+//       throw Error("bad argument");
+//     }
+//   }, 0);
+// }
+// let arrShapes=[new Circle(2), new Rectangle (3,6), new Triangle(3,7)]
+// console.log(cumilativeFun(arrShapes));
 // function cumulativeFunction(shapes) {
 //   return shapes.reduce((sum, shape) => {
 //     if (shape instanceof Shape) {
-//       console.log(`shape: ${shape.toString} - area: ${shape.area()}`);
+//
 //       return sum + shape.area();
 //     } else {
 //       throw Error("Bad Argument");
@@ -348,6 +361,8 @@
 //   new Triangle(4, 2),
 // ];
 // console.log(cumulativeFunction(arrShapes));
+
+// -------//------------------
 
 // class Account {
 //   constructor(accID, balance) {
@@ -408,74 +423,73 @@
 
 // console.log(emp.computeUpdatedBalanceSum()); //Expected Result: 89550
 
-function Student(stuID, answers = []) {
-  this.stuID = stuID;
-  this.answers = answers;
-}
-Student.prototype.addAnswer = function (qID, stuAnswer) {
-  this.answers.push({ qID, stuAnswer });
-};
+// function Student(stuID, answers = []) {
+//   this.stuID = stuID;
+//   this.answers = answers;
+// }
+// Student.prototype.addAnswer = function (qID, stuAnswer) {
+//   this.answers.push({ qID, stuAnswer });
+// };
 
-function Question(qID, corAnswer) {
-  this.qID = qID;
-  this.corAnswer = corAnswer;
-}
-Question.prototype.checkAnswer = function (student) {
-  //compare student answers in each of st
-  // return (
-  //   Object.entries(student).find((item) => item[0] === this.qID)[1] ===
-  //   this.corAnswer
-  // );
-  let map = new Map(Object.entries(student));
+// function Question(qID, corAnswer) {
+//   this.qID = qID;
+//   this.corAnswer = corAnswer;
+// }
+// Question.prototype.checkAnswer = function (student) {
+//   let map = new Map(Object.entries(student));
 
-  if (map.get(String(this.qID)) == this.corAnswer) return "Correct";
-  else return "Incorrect";
-};
+//   if (map.get(String(this.qID)) == this.corAnswer) return "Correct";
+//   else return "Incorrect";
+// };
 
-function Quiz(questions, students) {
-  this.questions = new Map();
-  questions.forEach(q=>this.questions.set(qID, corAnswer))
-  this.students = students;
-}
-Quiz.prototype.scoreStudentBySid = function (stuID) {
-  // count how many correct answers for each stu
-  let found = this.students.find((item) => item.stuID === stuID);
-  found.answers.reduce(sum, currentQuestion=>{
-    if (currentQuestion.checkAnswer(this.question.get(currentQuestion.qID))){
-      sum=sum+1;
-    }
-    return sum;
-  },0)
-};
+// function Quiz(questions, students) {
+//   this.questions = new Map();
+//   questions.forEach((q) => this.questions.set(qID, corAnswer));
+//   this.students = students;
+// }
+// Quiz.prototype.scoreStudentBySid = function (stuID) {
+//   // count how many correct answers for each stu
+//   let found = this.students.find((item) => item.stuID === stuID);
+//   found.answers.reduce(
+//     sum,
+//     (currentQuestion) => {
+//       if (currentQuestion.checkAnswer(this.question.get(currentQuestion.qID))) {
+//         sum = sum + 1;
+//       }
+//       return sum;
+//     },
+//     0
+//   );
+// };
 
-Quiz.prototype.getAverageScore = function () {
-  // average of all students scores
-  return this.student.reduce((sumAve,stu, index, arr)=>{
-    return sumAve + this.scoreStudentBySid(stu.stuID)/arr.length;
-  },0)
-};
+// Quiz.prototype.getAverageScore = function () {
+//   // average of all students scores
+//   return this.student.reduce((sumAve, stu, index, arr) => {
+//     return sumAve + this.scoreStudentBySid(stu.stuID) / arr.length;
+//   }, 0);
+// };
 
-const student1 = new Student(10);
-student1.addAnswer(new Question(2, "a"));
-student1.addAnswer(new Question(3, "b"));
-student1.addAnswer(new Question(1, "b"));
-const student2 = new Student(11);
-student2.addAnswer(new Question(3, "b"));
-student2.addAnswer(new Question(2, "a"));
-student2.addAnswer(new Question(1, "d"));
+// const student1 = new Student(10);
+// student1.addAnswer(new Question(2, "a"));
+// student1.addAnswer(new Question(3, "b"));
+// student1.addAnswer(new Question(1, "b"));
+// const student2 = new Student(11);
+// student2.addAnswer(new Question(3, "b"));
+// student2.addAnswer(new Question(2, "a"));
+// student2.addAnswer(new Question(1, "d"));
 
-const students = [student1, student2];
+// const students = [student1, student2];
 
-// console.log(students);
+// // console.log(students);
 
-const questions = [
-  new Question(1, "b"),
-  new Question(2, "a"),
-  new Question(3, "b"),
-];
-// let q2 = new Question(2, "a").checkAnswer({ 2: "a" });
-// console.log(q2);
-const quiz = new Quiz(questions, students);
+// const questions = [
+//   new Question(1, "b"),
+//   new Question(2, "a"),
+//   new Question(3, "b"),
+// ];
+// // let q2 = new Question(2, "a").checkAnswer({ 2: "a" });
+// // console.log(q2);
+// const quiz = new Quiz(questions, students);
 
 // let scoreforStudent10 = quiz.scoreStudentBySid(10);
 
@@ -488,6 +502,131 @@ const quiz = new Quiz(questions, students);
 // let average = quiz.getAverageScore();
 
 // console.log(average); //Expected Reuslt: 2.5
-let map = new Map(Object.entries({ 1: "a", 2: "b" }));
 
-map.forEach(q=>)
+// class Question {
+//   constructor(qID, answer) {
+//     this.qID = qID;
+//     this.answer = answer;
+//   }
+//   checkAnswer(answer) {
+//     return this.answer === answer;
+//   }
+// }
+
+// class Student {
+//   constructor(stuID, answers = []) {
+//     this.stuID = stuID;
+//     this.answers = answers;
+//   }
+//   addAnswer(question) {
+//     this.answers.push(question);
+//   }
+// }
+
+// class Quiz {
+//   constructor(questionsArray = [], students = []) {
+//     this.questions = new Map();
+//     //convert question array to map
+//     questions.forEach((question) =>
+//       this.questions.set(question.qID, question.corAnswer)
+//     );
+//     this.students = students;
+//   }
+//   scoreStudent(stuID) {
+//     // to do compute - score based on answer
+//     let found = this.students.filter((item) => item.stuID == stuID);
+//     found.answers.reduce((sum, currentQuestion) => {
+//       let questionID = currentQuestion.qID;
+//       let correctAnswer = this.question.get(questionID);
+//       let result = currentQuestion.checkAnswer(correctAnswer);
+//       if (result) sum += 1;
+//       return sum;
+//     }, 0);
+//   }
+//   getAverageScore() {
+//     this.students.reduce((aveSum, student, item, arr) => {
+//       return aveSum + this.scoreStudent(student.stuID) / arr.length;
+//     }, 0);
+//   }
+// }
+
+// const questions = [
+//   new Question(1, "a"),
+//   new Question(2, "b"),
+//   new Question(3, "d"),
+// ];
+
+// let student1 = new Student(1001, [
+//   new Question(1, "b"),
+//   new Question(2, "b"),
+//   new Question(3, "c"),
+// ]);
+// student1.addAnswer(new Question(1, "b"));
+// student1.addAnswer(new Question(2, "b"));
+// student1.addAnswer(new Question(3, "c"));
+
+// let student2 = new Student(1002, [
+//   new Question(1, "a"),
+//   new Question(2, "b"),
+//   new Question(3, "d"),
+// ]);
+// student2.addAnswer(new Question(1, "a"));
+// student2.addAnswer(new Question(2, "b"));
+// student2.addAnswer(new Question(3, "d"));
+
+// const students = [student1, student2];
+// let quizObj = new Quiz(questions, students);
+
+// console.log(quizObj.scoreStudent(1001));
+
+// function checkExam(x, y) {}
+
+// let correctAnswers = [
+//   { qID: 1, answer: "a" },
+//   { qID: 2, answer: "b" },
+//   { qID: 3, answer: "c" },
+// ];
+// let studentAnswers = [
+//   { qID: 1, answer: "b" },
+//   { qID: 2, answer: "b" },
+//   { qID: 3, answer: "b" },
+// ];
+// console.log(checkExam(correctAnswers, studentAnswers));
+// {2,3,1,5,6,4,5,5,2}
+class MySet {
+  constructor(obj = {}) {
+    let x = obj;
+    if (Array.isArray(obj)) {
+      x = "{";
+      let newObj = {};
+      for (let each of obj) {
+        if (newObj[each]) newObj[each]++;
+        else newObj[each] = 1;
+      }
+      console.log(newObj);
+
+      for (let element of Object.keys(newObj)) {
+        x += element + ",";
+      }
+      x = x.slice(0, -1) + "}";
+    }
+    this.obj = x;
+  }
+  addElement(value) {
+    let arr = this.obj.slice(1, -1).split(",");
+    let exists = false;
+    for (let each of arr) {
+      if (value == each) {
+        exists = true;
+      }
+    }
+    if (!exists) arr.push(String(value));
+    let newStr = "{" + arr.join(",") + "}";
+    this.obj = newStr;
+    console.log(this);
+  }
+}
+
+let newSet = new MySet([0, 1, 2, 2, 3, 3, 4, 5]);
+newSet.addElement("8");
+// console.log(newSet);
