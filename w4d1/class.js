@@ -593,25 +593,123 @@
 // ];
 // console.log(checkExam(correctAnswers, studentAnswers));
 // {2,3,1,5,6,4,5,5,2}
+
+// let newSet = new MySet([0, 1, 2, 2, 3, 3, 4, 5]);
+// newSet.addElement("8");
+// // console.log(newSet);
+
+// function replicate(n, num) {
+//   let arr = [];
+//   if (n <= 0) return arr;
+//   for (let i = 0; i < n; i++) {
+//     arr.push(num);
+//   }
+//   return arr;
+// }
+// console.log(replicate(3, 5));
+
+// function aggregate(arr) {
+//   let obj = {};
+//   for (let each of arr) {
+//     if (obj[each]) obj[each]++;
+//     else obj[each] = 1;
+//   }
+//   return obj;
+// }
+// let pets = ["dog", "chicken", "cat", "dog", "chicken", "chicken", "rabbit"];
+// console.log(aggregate(pets));
+
+// let ll = {};
+// ll.value = 1;
+// ll.next = null;
+
+// console.log(ll);
+
+// let ll = {};
+
+// ll.add = function (n) {
+//   if (!ll.value) {
+//     this.value = n;
+//     this.next = null;
+//   } else {
+//     let current = this;
+//     while (current.next) {
+//       current = current.next;
+//     }
+//     current.next = { value: n, next: null };
+//   }
+// };
+
+// ll.remove = function (n) {
+//   let current = this;
+//   let previous = null;
+//   while (current) {
+//     if (current.value === n) {
+//       if (previous === null) {
+//         this.value = current.next.value;
+//         this.next = current.next.next;
+//       } else {
+//         previous.next = current.next;
+//       }
+//       return true;
+//     } else {
+//       previous = current;
+//       current = current.next;
+//     }
+//   }
+//   return false;
+// };
+
+// ll.print = function () {
+//   let x = "{";
+//   let current = this;
+//   while (!current.next == null) {
+//     x += current.value + ",";
+//     current = current.next;
+//   }
+//   x += current.value + "}";
+//   console.log(x);
+//   return x;
+// };
+
+// ll.add(1);
+// // console.log(ll);
+// ll.add(2);
+// // console.log(ll);
+// ll.add(3);
+// // console.log(ll);
+// ll.print();
+// ll.remove(2);
+// console.log(ll);
+// ll.print();
 class MySet {
   constructor(obj = {}) {
-    let x = obj;
+    this.obj = obj;
+  }
+  toString() {
+    let x = this.obj;
+    let obj = this.obj;
+
     if (Array.isArray(obj)) {
       x = "{";
+
       let newObj = {};
+
       for (let each of obj) {
         if (newObj[each]) newObj[each]++;
         else newObj[each] = 1;
       }
-      console.log(newObj);
+      // console.log(newObj);
 
       for (let element of Object.keys(newObj)) {
         x += element + ",";
       }
+
       x = x.slice(0, -1) + "}";
+      return x;
     }
-    this.obj = x;
   }
+
   addElement(value) {
     let arr = this.obj.slice(1, -1).split(",");
     let exists = false;
@@ -625,8 +723,28 @@ class MySet {
     this.obj = newStr;
     console.log(this);
   }
-}
 
-let newSet = new MySet([0, 1, 2, 2, 3, 3, 4, 5]);
-newSet.addElement("8");
-// console.log(newSet);
+  remove() {
+    //like above
+  }
+}
+const numberSet1 = new MySet([1, 2, 2, 5, 3, 2, 6, 3]);
+
+console.log(numberSet1.toString());
+
+let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  },
+};
+let speedy = Object.create(hamster);
+let lazy = Object.create(hamster);
+speedy.eat("apple");
+console.log(speedy.stomach); // [ 'apple' ]
+console.log(lazy.stomach); // [ 'apple' ]
+lazy.stomach = lazy.stomach.slice(); //they dont share the same state any more ---- they are different objects - you can proove it
+speedy.eat("banana");
+console.log(speedy.stomach); // [ 'apple',"banana" ]
+console.log(lazy.stomach); // [ 'apple' ]
